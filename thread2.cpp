@@ -1,5 +1,5 @@
 #include <iostream>
-#include <thread>   // ?? añadido
+#include <thread>   
 using namespace std;
 
 bool compara(char* ini, char* fin, char* palabra) {
@@ -25,7 +25,7 @@ int contar(char(*mat)[10], char* palabra)
     return contador;
 }
 
-// función que usará cada hilo
+// funcion ilo
 void tarea(char (*mat)[10], char* palabra, int* resultado) {
     *resultado = contar(mat, palabra);
 }
@@ -47,8 +47,8 @@ int main()
 
     char palabras[][10] = { "CASADO", "ASADO","DORADO","CASA","ASA" };
 
-    int resultados[5] = { 0 };       // para guardar los contadores
-    thread h[5];               // un hilo por palabra
+    int resultados[5] = { 0 };       
+    thread h[5];               
 
     for (int i = 0; i < 5; i++) {
         h[i] = thread(tarea, mat, palabras[i], &resultados[i]);
@@ -62,9 +62,10 @@ int main()
 
     // Mostrar resultados
     for (int i = 0; i < 5; i++) {
-        cout << "La palabra " << palabras[i]
+        cout << "la palabra " << palabras[i]
             << " aparece " << resultados[i] << " veces" << endl;
     }
 
     return 0;
+
 }
